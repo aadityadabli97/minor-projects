@@ -1,0 +1,140 @@
+# import turtle
+#
+# timmy=turtle.Turtle()
+# timmy.shape("turtle")
+# timmy.color("Black","red")
+# timmy.forward(100)
+# my_screen=turtle.Screen()
+# my_screen.exitonclick()
+quarters = 0.25
+dimes = 0.1
+nickles = 0.05
+pennies = 0.01
+MENU = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
+
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
+}
+
+
+turn_off = False
+def calc_res(value):
+    global turn_off
+    if value=="espresso":
+        if resources["water"] < MENU["espresso"]["ingredients"]["water"]:
+            print("Sorry there is not enough water")
+            turn_off=True
+        elif resources["coffee"] < MENU["espresso"]["ingredients"]["coffee"]:
+            print("Sorry there is not enough coffee")
+            turn_off=True
+        else:
+            print("Thanks for choosing espresso")
+    elif value == "latte":
+        if resources["water"] < MENU["latte"]["ingredients"]["water"]:
+            print("Sorry there is not enough water")
+            turn_off=True
+        elif resources["milk"] < MENU["latte"]["ingredients"]["milk"]:
+            print("Sorry there is not enough coffee")
+            turn_off=True
+        elif resources["coffee"] < MENU["latte"]["ingredients"]["coffee"]:
+            print("Sorry there is not enough coffee")
+            turn_off=True
+        else:
+            print("Thanks for choosing latte")
+    elif value == "cappuccino":
+        if resources["water"] < MENU["cappuccino"]["ingredients"]["water"]:
+            print("Sorry there is not enough water")
+            turn_off=True
+        elif resources["milk"] < MENU["cappuccino"]["ingredients"]["milk"]:
+            print("Sorry there is not enough coffee")
+            turn_off=True
+        elif resources["coffee"] < MENU["cappuccino"]["ingredients"]["coffee"]:
+            print("Sorry there is not enough coffee")
+            turn_off=True
+        else:
+            print("Thanks for choosing cappuccino")
+def coffee():
+    user_choice = input("What would you like? espresso/latte/cappuccino: ")
+    for key in resources:
+        if user_choice == "report":
+            print(f"{key}:{resources[key]}")
+
+    if user_choice=="espresso":
+        calc_res("espresso")
+        print("Please insert the coins")
+        q = int(input("quarters : "))
+        d = int(input("dimes : "))
+        n = int(input("nickles : "))
+        p = int(input("pennies : "))
+        total= q*quarters + d*dimes + n*nickles + p*pennies
+        change=total - MENU["espresso"]["cost"]
+        if change<0:
+            print("Sorry that's not enough money. Money refunded")
+        elif change>0:
+            print(f"Here's your change {change} , Enjoy your espresso!")
+        elif change==0:
+            print(f"your coffee costs ${change}")
+    if user_choice=="latte":
+        calc_res("latte")
+        print("Please insert the coins")
+        q = int(input("quarters : "))
+        d = int(input("dimes : "))
+        n = int(input("nickles : "))
+        p = int(input("pennies : "))
+        total= q*quarters + d*dimes + n*nickles + p*pennies
+        change=total - MENU["latte"]["cost"]
+        if change<0:
+            print("Sorry that's not enough money. Money refunded")
+        elif change>0:
+            print(f"Here's your change {change} , Enjoy your latte!")
+        elif change==0:
+            print(f"your coffee costs ${change}")
+    if user_choice=="cappuccino":
+        calc_res("cappuccino")
+        print("Please insert the coins")
+        q = int(input("quarters : "))
+        d = int(input("dimes : "))
+        n = int(input("nickles : "))
+        p = int(input("pennies : "))
+        total= q*quarters + d*dimes + n*nickles + p*pennies
+        change=total - MENU["cappuccino"]["cost"]
+        if change<0:
+            print("Sorry that's not enough money. Money refunded")
+        elif change>0:
+            print(f"Here's your change {change} , Enjoy your Cappuccino!")
+
+        elif change==0:
+            print(f"your coffee costs ${change}")
+coffee()
+if input("Do you want to take anything : 'Yes' or 'No' ")=='Yes':
+    coffee()
+else:
+    for key in range(3):
+        print({resources[key]-MENU["espresso"]["ingredients"][key]
+        print()
