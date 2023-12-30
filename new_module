@@ -136,5 +136,4 @@ if input("Do you want to take anything : 'Yes' or 'No' ")=='Yes':
     coffee()
 else:
     for key in range(3):
-        print({resources[key]-MENU["espresso"]["ingredients"][key]
         print()
