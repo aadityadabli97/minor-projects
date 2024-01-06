@@ -1,5 +1,5 @@
 # This project is to Send email on a particular day using python
-# Here I have use datetime module for date and time , smtplib module for email , and random module to perform random choice 
+# Here I have use datetime module for date and time , smtplib module for email , and random module to perform random choice  
 
 import datetime, smtplib, random
 
